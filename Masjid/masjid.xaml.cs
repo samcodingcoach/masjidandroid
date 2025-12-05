@@ -5,37 +5,45 @@ namespace Masjid.Masjid;
 
 public partial class masjid : ContentPage
 {
-   
 
+    string gps;
+    string id_mesjid;
     public masjid()
 	{
 		InitializeComponent();
-        LoadMap();
+       
+        _ = get_masjiddata(); // Fire and forget
     }
 
     public class list_data
     {
-        public string id_masjid { get; set; }
-        public string nama_masjid { get; set; }
-        public string alamat { get; set; }
-        public string email { get; set; }
-        public string foto { get; set; }
-        public string gps { get; set; }
-        public string kota { get; set; }
-        public string provinsi { get; set; }
+        public int id_masjid { get; set; }
+        public string nama_mesjid { get; set; } = string.Empty;
+        public string alamat { get; set; } = string.Empty;
+        public string email { get; set; } = string.Empty;
+        public string? foto { get; set; }
+        public string gps { get; set; } = string.Empty;
+        public string kota { get; set; } = string.Empty;
+        public string provinsi { get; set; } = string.Empty;
         public bool mushola { get; set; } = true;
         public string created_at { get; set; } = string.Empty;
+    }
+
+    public class ApiResponse
+    {
+        public int count { get; set; }
+        public List<list_data> data { get; set; } = new List<list_data>();
+        public bool success { get; set; }
     }
 
     private void LoadMap()
     {
         // Ganti dengan koordinat yang Anda inginkan -0.502464, 117.120475
 
-        double lat = -0.502464;
-        double lng = 117.120475;
+      
 
         // URL Embed Google Maps (z=15 adalah level zoom)
-        string mapUrl = $"https://maps.google.com/maps?q={lat},{lng}&z=15&output=embed";
+        string mapUrl = $"https://maps.google.com/maps?q={gps}&z=15&output=embed";
 
         // Bungkus URL dalam iframe HTML agar responsif di WebView
         var htmlSource = new HtmlWebViewSource();
@@ -54,11 +62,8 @@ public partial class masjid : ContentPage
             </html>";
 
         MapWebView.Source = htmlSource;
-    }
-
-
-    string key;
-    private async void get_masjiddata()
+    } 
+    private async Task get_masjiddata()
     {
         try
         {
@@ -70,40 +75,37 @@ public partial class masjid : ContentPage
                 if (response.IsSuccessStatusCode)
                 {
                     string json = await response.Content.ReadAsStringAsync();
-                    List<list_data> rowData = JsonConvert.DeserializeObject<List<list_data>>(json);
+                    ApiResponse apiResponse = JsonConvert.DeserializeObject<ApiResponse>(json);
 
-                    if (rowData != null && rowData.Count > 0)
+                    if (apiResponse != null && apiResponse.success && apiResponse.data != null && apiResponse.data.Count > 0)
                     {
-                        list_data row = rowData[0];
-                        
-                        T_NamaMesjid.Text = row.nama_masjid;
+                        list_data row = apiResponse.data[0];
+                        id_mesjid = row.id_masjid.ToString();
+                        T_NamaMesjid.Text = row.nama_mesjid;
                         T_Alamat.Text = row.alamat;
                         T_Provinsi.Text = row.provinsi;
                         T_Kota.Text = row.kota;
                         T_Update.Text = row.created_at;
                         T_Email.Text = row.email;
-                        
-
-
-
+                        gps = row.gps;
+                        LoadMap();
                     }
                     else
                     {
-                        // Handle jumlah kosong dan grandtotal kosong
-
+                        // Handle empty data array or failure response
+                        System.Diagnostics.Debug.WriteLine("API returned no data or failed request");
                     }
                 }
                 else
                 {
-
+                    System.Diagnostics.Debug.WriteLine($"HTTP Error: {response.StatusCode}");
                 }
             }
         }
-
         catch (Exception ex)
         {
-            //debug console exception
-            
+            // Debug console exception
+            System.Diagnostics.Debug.WriteLine($"Exception: {ex.Message}");
         }
     }
 

@@ -10,7 +10,7 @@
             API_HOST = url_api;
            // MainPage = new AppShell();
 
-            MainPage = new NavigationPage(new mustahik.NewMustahik());
+            MainPage = new NavigationPage(new Masjid.masjid());
         }
     }
 }
