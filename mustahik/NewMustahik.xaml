@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Masjid.mustahik.NewMustahik"
+             Title="Mustahik Baru">
+    <Grid Padding="20,0,20,10" ColumnDefinitions="*" RowDefinitions="*,Auto">
+        <ScrollView Grid.Row="0" VerticalScrollBarVisibility="Default">
+            <StackLayout Spacing="10" VerticalOptions="Start">
+                <Label Text="Nama Lengkap" FontFamily="TiktokSemiBold"></Label>
+                <Border Stroke="#E0E0E0" StrokeThickness="0.5" BackgroundColor="#F5F5F5" Padding="10,0,0,0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5"/>
+                    </Border.StrokeShape>
+                    <Entry x:Name="T_Nama" Placeholder="Inputkan nama lengkap"/>
+                </Border>
+
+                <Label Text="Kategori Mustahik" FontFamily="TiktokSemiBold"></Label>
+                <Border Stroke="#E0E0E0" Grid.Row="0" StrokeThickness="0.5" BackgroundColor="#F5F5F5" Padding="10,0,10,0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5"/>
+                    </Border.StrokeShape>
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Picker x:Name="T_Kategori" Title="Pilih kategori mustahik" Grid.Column="0">
+                            <Picker.Items>
+                                <x:String>Fakir</x:String>
+                                <x:String>Miskin</x:String>
+                                <x:String>Amil</x:String>
+                                <x:String>Mualaf</x:String>
+                            </Picker.Items>
+                        </Picker>
+                        <Image Source="search.png" Opacity="0.5" HeightRequest="24" WidthRequest="24" Grid.Column="1" VerticalOptions="Center"/>
+                    </Grid>
+                </Border>
+
+                <Label Text="Nomor Identitas" FontFamily="TiktokSemiBold"></Label>
+                <Border Stroke="#E0E0E0" StrokeThickness="0.5" BackgroundColor="#F5F5F5" Padding="10,0,0,0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5"/>
+                    </Border.StrokeShape>
+                    <Entry x:Name="T_NoKtp" Placeholder="Inputkan No KTP/SIM" Keyboard="Numeric"/>
+                </Border>
+
+                <Label Text="Nomor Telepon" FontFamily="TiktokSemiBold"></Label>
+                <Border Stroke="#E0E0E0" StrokeThickness="0.5" BackgroundColor="#F5F5F5" Padding="10,0,0,0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5"/>
+                    </Border.StrokeShape>
+                    <Entry x:Name="T_Nohp" Placeholder="Inputkan No HP" Keyboard="Telephone"/>
+                </Border>
+
+                <Label Text="Alamat" FontFamily="TiktokSemiBold"></Label>
+                <Border Stroke="#E0E0E0" StrokeThickness="0.5" BackgroundColor="#F5F5F5" Padding="10,0,0,0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5"/>
+                    </Border.StrokeShape>
+                    <Editor HeightRequest="70" x:Name="T_Alamat" Placeholder="Inputkan alamat lengkap"></Editor>
+                </Border>
+
+                <Label Text="Tanggal Lahir" FontFamily="TiktokSemiBold"></Label>
+                <Border Stroke="#E0E0E0" StrokeThickness="0.5" BackgroundColor="#F5F5F5" Padding="10,0,0,0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5"/>
+                    </Border.StrokeShape>
+                    <DatePicker x:Name="T_TglLahir" Format="dd MMMM yyyy"></DatePicker>
+                </Border>
+
+                <Label Text="Keterangan Lainnya" FontFamily="TiktokSemiBold"></Label>
+                <Border Stroke="#E0E0E0" StrokeThickness="0.5" BackgroundColor="#F5F5F5" Padding="10,0,0,0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5"/>
+                    </Border.StrokeShape>
+                    <Editor HeightRequest="70" x:Name="T_Keterangan" Placeholder="Inputkan keterangan lainnya"></Editor>
+                </Border>
+
+                <Border Stroke="#E0E0E0" StrokeThickness="0.5" BackgroundColor="White" Padding="10,0,0,0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5"/>
+                    </Border.StrokeShape>
+                    <StackLayout Orientation="Horizontal">
+
+                        <Label Text="Mustahik aktif"  VerticalOptions="Center" ></Label>
+                        <Switch VerticalOptions="Center" HorizontalOptions="EndAndExpand"></Switch>
+                    </StackLayout>
+                </Border>
+
+            </StackLayout>
+        </ScrollView>
+        <Button Text="Simpan Mustahik" FontSize="16" FontFamily="TiktokBold" CornerRadius="10" BackgroundColor="#128C7E" FontAttributes="Bold" Grid.Row="1"/>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" Title="Data Masjid"
+             x:Class="Masjid.Masjid.masjid">
+    <Grid Padding="20,0,20,10" ColumnDefinitions="*" RowDefinitions="*,Auto">
+        <ScrollView Grid.Row="0" VerticalScrollBarVisibility="Default">
+            <StackLayout Spacing="10" VerticalOptions="Start">
+                <Label Text="Nama Mesjid / Musholla" FontFamily="TiktokSemiBold"></Label>
+                <Border Stroke="#E0E0E0" StrokeThickness="0.5" BackgroundColor="#F5F5F5" Padding="10,0,0,0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5"/>
+                    </Border.StrokeShape>
+                    <Entry x:Name="T_NamaMesjid" Placeholder="Inputkan nama mesjid"/>
+                </Border>
+
+                <Label Text="Provinsi" FontFamily="TiktokSemiBold" Margin="0,5,0,0"></Label>
+                <Border Stroke="#E0E0E0" StrokeThickness="0.5" BackgroundColor="#F5F5F5" Padding="10,0,0,0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5"/>
+                    </Border.StrokeShape>
+                    <Entry x:Name="T_Provinsi" Placeholder="Inputkan provinsi"/>
+                </Border>
+
+                <Label Text="Kota" FontFamily="TiktokSemiBold"></Label>
+                <Border Stroke="#E0E0E0" StrokeThickness="0.5" BackgroundColor="#F5F5F5" Padding="10,0,0,0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5"/>
+                    </Border.StrokeShape>
+                    <Entry x:Name="T_Kota" Placeholder="Inputkan kota"/>
+                </Border>
+
+                <Label Text="Alamat" FontFamily="TiktokSemiBold"></Label>
+                <Border Stroke="#E0E0E0" StrokeThickness="0.5" BackgroundColor="#F5F5F5" Padding="10,0,0,0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5"/>
+                    </Border.StrokeShape>
+                    <Editor HeightRequest="70" x:Name="T_Alamat" Placeholder="Inputkan alamat lengkap"></Editor>
+                </Border>
+
+                <WebView x:Name="MapWebView" HeightRequest="200" />
+
+                <Label Text="Email" FontFamily="TiktokSemiBold"></Label>
+                <Border Stroke="#E0E0E0" StrokeThickness="0.5" BackgroundColor="#F5F5F5" Padding="10,0,0,0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5"/>
+                    </Border.StrokeShape>
+                    <Entry x:Name="T_Email" Placeholder="Inputkan Email" IsReadOnly="True"/>
+                </Border>
+
+                <Label Text="Waktu Update" FontFamily="TiktokSemiBold"></Label>
+                <Border Stroke="#E0E0E0" StrokeThickness="0.5" BackgroundColor="#F5F5F5" Padding="10,0,0,0" Margin="0,0,0,10">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="5"/>
+                    </Border.StrokeShape>
+                    <Entry x:Name="T_Update" IsReadOnly="True"/>
+                </Border>
+               
+
+            </StackLayout>
+        </ScrollView>
+        <Button Text="Update" FontSize="16" FontFamily="TiktokBold" CornerRadius="10" BackgroundColor="#128C7E" FontAttributes="Bold" Grid.Row="1"/>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Masjid.mustahik.ListMustahik"
+             Title="Daftar Mustahik">
+    <Grid Padding="20,0,20,10" ColumnDefinitions="*" RowDefinitions="Auto,Auto,*,Auto" RowSpacing="10">
+
+        <Border Stroke="#E0E0E0" Grid.Row="0" StrokeThickness="0.5" BackgroundColor="#F5F5F5" Padding="10,0,10,0">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="5"/>
+            </Border.StrokeShape>
+            <Grid ColumnDefinitions="*,Auto">
+                <Picker x:Name="T_Kategori" Title="Pilih kategori mustahik" Grid.Column="0">
+                    <Picker.Items>
+                        <x:String>Fakir</x:String>
+                        <x:String>Miskin</x:String>
+                        <x:String>Amil</x:String>
+                        <x:String>Mualaf</x:String>
+                    </Picker.Items>
+                </Picker>
+                <Image Source="search.png" Opacity="0.5" HeightRequest="24" WidthRequest="24" Grid.Column="1" VerticalOptions="Center"/>
+            </Grid>
+        </Border>
+
+        <Label Grid.Row="1" FontSize="Caption" TextColor="#333">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Menemukan " />
+                    <Span Text="150" FontFamily="TiktokBold" />
+                    <Span Text=" data mustahik." />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+        <ScrollView Grid.Row="2" VerticalScrollBarVisibility="Default">
+            <Border Stroke="#E0E0E0" Grid.Row="0" StrokeThickness="0.5"  VerticalOptions="Start" BackgroundColor="White" Padding="10">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="5"/>
+                </Border.StrokeShape>
+
+                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="10">
+                    <Border Grid.Column="0" HeightRequest="40" WidthRequest="40" BackgroundColor="#E0F2F1" TranslationX="2"
+                            Stroke="#128C7E" StrokeThickness="0.5" VerticalOptions="Center">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="20"/>
+                        </Border.StrokeShape>
+
+                        <Label Text="M" FontSize="18" FontAttributes="Bold" TextColor="#128C7E" HorizontalOptions="Center" VerticalOptions="Center" FontFamily="TiktokSemiBold"/>
+                    </Border>
+                    <StackLayout Grid.Column="1" VerticalOptions="Center" TranslationX="5">
+                        <Label Text="John Doe" FontFamily="TiktokSemiBold"></Label>
+                        <Label Text="Fakir" FontSize="Caption" TextColor="Gray" TranslationY="-1"></Label>
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="2" Orientation="Horizontal" Spacing="10">
+                        <Image Source="wa.png" HeightRequest="24"/>
+                        <Image Source="more.png" HeightRequest="24"/>
+                    </StackLayout>
+                </Grid>
+                
+            </Border>
+        </ScrollView>
+
+        <Button Text="Tambah Mustahik" FontSize="18" CornerRadius="10" BackgroundColor="#128C7E" FontAttributes="Bold" Grid.Row="4"/>
+    </Grid>
+</ContentPage>

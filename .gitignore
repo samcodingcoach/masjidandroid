@@ -1,0 +1,7 @@
+bin/
+obj/
+.vs/
+Platforms/iOS
+Platforms/MacCatalyst
+Platforms/Tizen
+Platforms/Windows
